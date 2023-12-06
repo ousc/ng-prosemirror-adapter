@@ -2,11 +2,11 @@ import {
   Component, ContentChild
 } from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {NgProsemirrorAdaptorService} from "./ng-prosemirror-adaptor.service";
+import {NgProsemirrorAdapterService} from "./ng-prosemirror-adapter.service";
 import {NgProsemirrorEditor} from "./components/ng-prosemirror-editor.component";
 
 @Component({
-  selector: 'ng-prosemirror-adaptor-provider',
+  selector: 'ng-prosemirror-adapter-provider',
   standalone: true,
   imports: [CommonModule],
   template: `<ng-content/>`,
@@ -17,9 +17,9 @@ import {NgProsemirrorEditor} from "./components/ng-prosemirror-editor.component"
         height: 100%;
     }
   `,
-  providers: [NgProsemirrorAdaptorService]
+  providers: [NgProsemirrorAdapterService]
 })
-export class NgProsemirrorAdaptorProvider {
+export class NgProsemirrorAdapterProvider {
 
   private _editorComp: NgProsemirrorEditor;
 
@@ -37,7 +37,7 @@ export class NgProsemirrorAdaptorProvider {
   }
 
   constructor(
-    public service: NgProsemirrorAdaptorService) {
+    public service: NgProsemirrorAdapterService) {
     this.service.provider = this;
   }
 

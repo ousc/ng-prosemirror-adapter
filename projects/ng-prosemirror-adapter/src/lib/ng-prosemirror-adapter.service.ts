@@ -3,13 +3,13 @@ import {
   Injectable, Injector, ViewContainerRef
 } from '@angular/core';
 import {Decoration, EditorView} from "prosemirror-view";
-import {NgProsemirrorAdaptorProvider} from "./ng-prosemirror-adaptor.component";
+import {NgProsemirrorAdapterProvider} from "./ng-prosemirror-adapter.component";
 import {
   NgEditorViewComponent, NgNodeViewUserOptions,
   NgPluginViewUserOptions, NgWidgetUserOptions, NodeViewContext, NodeViewFactory,
   PluginViewContext,
   PluginViewFactory, WidgetViewContext, WidgetViewFactory
-} from "./ngProsemirrorAdaptor.type";
+} from "./ngProsemirrorAdapter.type";
 import {CoreNodeView, CorePluginView, CoreWidgetView} from "@prosemirror-adapter/core";
 import {nanoid} from "nanoid";
 import {NgProsemirrorEditor} from "./components/ng-prosemirror-editor.component";
@@ -24,7 +24,7 @@ const firstElementChild = (el: HTMLElement) => {
 }
 
 @Injectable()
-export class NgProsemirrorAdaptorService {
+export class NgProsemirrorAdapterService {
   constructor(
     private _injector: Injector,
     private _vcf: ViewContainerRef,
@@ -33,7 +33,7 @@ export class NgProsemirrorAdaptorService {
 
   editor: NgProsemirrorEditor;
 
-  provider: NgProsemirrorAdaptorProvider;
+  provider: NgProsemirrorAdapterProvider;
 
   nodeView: Record<string, CoreNodeView<NgEditorViewComponent>> = {};
   nodeViewContext: Record<string, NodeViewContext> = {};

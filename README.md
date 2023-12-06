@@ -12,14 +12,14 @@ Main ideas and API design).This project is just adding support for Angular.
 You can run this example by:
 
 ```bash
-git clone https://github.com/ousc/ng-prosemirror-adaptor.git
-cd ng-prosemirror-adaptor
+git clone https://github.com/ousc/ng-prosemirror-adapter.git
+cd ng-prosemirror-adapter
 npm install
 npm run start
 ```
 
 ## Online Demo
-[https://ousc.github.io/ng-prosemirror-adaptor](https://ousc.github.io/ng-prosemirror-adaptor/)
+[https://ousc.github.io/ng-prosemirror-adapter](https://ousc.github.io/ng-prosemirror-adaptor/)
 
 ## Getting Started
 
@@ -32,9 +32,9 @@ npm install ng-prosemirror-adapter
 ### Wrap your component with provider
 
 ```html
-<ng-prosemirror-adaptor-provider>
+<ng-prosemirror-adapter-provider>
   <YourAwesomeEditor/>
-</ng-prosemirror-adaptor-provider>
+</ng-prosemirror-adapter-provider>
 ```
 
 <details>
@@ -267,14 +267,14 @@ export class EditorComponent extends NgProsemirrorEditor implements AfterViewIni
 }
 ```
 
-🚀 Congratulations! You have built your first angu;ar widget view with prosemirror-adapter.
+🚀 Congratulations! You have built your first angular widget view with prosemirror-adapter.
 
 </details>
 
 ## API
 
-if you properly wrap your component with `NgProsemirrorAdaptorProvider`, and extends `NgProsemirrorEditor` or `NgProsemirrorNode` or `NgProsemirrorPlugin` or `NgProsemirrorWidget`, you can use `this.provider` to access the following APIs.
-else you can use @ViewChild to access the NgProsemirrorAdaptorProvider instance and use the following APIs.
+if you properly wrap your component with `NgProsemirrorAdapterProvider`, and extends `NgProsemirrorEditor` or `NgProsemirrorNode` or `NgProsemirrorPlugin` or `NgProsemirrorWidget`, you can use `this.provider` to access the following APIs.
+else you can use @ViewChild to access the NgProsemirrorAdapterProvider instance and use the following APIs.
 
 <details>
 

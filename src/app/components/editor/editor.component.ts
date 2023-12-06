@@ -5,7 +5,7 @@ import {Size} from "../size.component";
 import {Paragraph} from "../paragraph.component";
 import {
   NgProsemirrorEditor
-} from "../../../../projects/ng-prosemirror-adaptor/src/lib/components/ng-prosemirror-editor.component";
+} from "../../../../projects/ng-prosemirror-adapter/src/lib/components/ng-prosemirror-editor.component";
 import {Hashes} from "../hashes.component";
 import {Heading} from "../heading.component";
 import {DecorationSet} from "prosemirror-view";

@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Input, Output} from "@angular/core";
-import {NgProsemirrorAdaptorProvider} from "../ng-prosemirror-adaptor.component";
+import {NgProsemirrorAdapterProvider} from "../ng-prosemirror-adapter.component";
 import {CoreNodeView, CoreWidgetView} from "@prosemirror-adapter/core";
-import {NgEditorViewComponent} from "../ngProsemirrorAdaptor.type";
+import {NgEditorViewComponent} from "../ngProsemirrorAdapter.type";
 
 
 @Component({
@@ -12,7 +12,7 @@ import {NgEditorViewComponent} from "../ngProsemirrorAdaptor.type";
 })
 export abstract class NgProsemirrorWidget implements AfterViewInit {
   @Input() public key: string;
-  @Input() public provider: NgProsemirrorAdaptorProvider;
+  @Input() public provider: NgProsemirrorAdapterProvider;
 
   constructor(public el: ElementRef) {
   }

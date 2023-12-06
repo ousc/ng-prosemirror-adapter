@@ -2,14 +2,14 @@ import {ChangeDetectorRef, Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
 import {
-  NgProsemirrorAdaptorProvider
-} from "../../projects/ng-prosemirror-adaptor/src/lib/ng-prosemirror-adaptor.component";
+  NgProsemirrorAdapterProvider
+} from "../../projects/ng-prosemirror-adapter/src/lib/ng-prosemirror-adapter.component";
 import {EditorComponent} from "./components/editor/editor.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, NgProsemirrorAdaptorProvider, EditorComponent],
+  imports: [CommonModule, RouterOutlet, NgProsemirrorAdapterProvider, EditorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.less'
 })

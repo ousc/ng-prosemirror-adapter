@@ -1,5 +1,5 @@
 import {Component, ElementRef} from "@angular/core";
-import {NgProsemirrorAdaptorProvider} from "../ng-prosemirror-adaptor.component";
+import {NgProsemirrorAdapterProvider} from "../ng-prosemirror-adapter.component";
 
 @Component({
   selector: 'ng-prosemirror-editor',
@@ -12,5 +12,5 @@ export abstract class NgProsemirrorEditor {
   constructor(public el: ElementRef) {
   }
 
-  public provider: NgProsemirrorAdaptorProvider;
+  public provider: NgProsemirrorAdapterProvider;
 }

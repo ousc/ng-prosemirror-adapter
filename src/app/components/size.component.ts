@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {
   NgProsemirrorPlugin
-} from "../../../projects/ng-prosemirror-adaptor/src/lib/components/ng-prosemirror-plugin.component";
+} from "../../../projects/ng-prosemirror-adapter/src/lib/components/ng-prosemirror-plugin.component";
 
 @Component({
   selector: 'size',

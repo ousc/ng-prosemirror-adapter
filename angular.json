@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-prosemirror-adaptor-example": {
+    "ng-prosemirror-adapter-example": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ng-prosemirror-adaptor-example",
+            "outputPath": "dist/ng-prosemirror-adapter-example",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -79,10 +79,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ng-prosemirror-adaptor-example:build:production"
+              "buildTarget": "ng-prosemirror-adapter-example:build:production"
             },
             "development": {
-              "buildTarget": "ng-prosemirror-adaptor-example:build:development"
+              "buildTarget": "ng-prosemirror-adapter-example:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -90,7 +90,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "ng-prosemirror-adaptor-example:build"
+            "buildTarget": "ng-prosemirror-adapter-example:build"
           }
         },
         "test": {
@@ -114,23 +114,23 @@
         }
       }
     },
-    "ng-prosemirror-adaptor": {
+    "ng-prosemirror-adapter": {
       "projectType": "library",
-      "root": "projects/ng-prosemirror-adaptor",
-      "sourceRoot": "projects/ng-prosemirror-adaptor/src",
+      "root": "projects/ng-prosemirror-adapter",
+      "sourceRoot": "projects/ng-prosemirror-adapter/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/ng-prosemirror-adaptor/ng-package.json"
+            "project": "projects/ng-prosemirror-adapter/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ng-prosemirror-adaptor/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ng-prosemirror-adapter/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ng-prosemirror-adaptor/tsconfig.lib.json"
+              "tsConfig": "projects/ng-prosemirror-adapter/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -138,7 +138,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/ng-prosemirror-adaptor/tsconfig.spec.json",
+            "tsConfig": "projects/ng-prosemirror-adapter/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"

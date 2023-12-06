@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {
   NgProsemirrorWidget
-} from "../../../projects/ng-prosemirror-adaptor/src/lib/components/ng-prosemirror-widget.component";
+} from "../../../projects/ng-prosemirror-adapter/src/lib/components/ng-prosemirror-widget.component";
 
 @Component({
   selector: 'hashes',

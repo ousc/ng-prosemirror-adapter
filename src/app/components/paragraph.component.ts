@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {
   NgProsemirrorNode
-} from "../../../projects/ng-prosemirror-adaptor/src/lib/components/ng-prosemirror-node.component";
+} from "../../../projects/ng-prosemirror-adapter/src/lib/components/ng-prosemirror-node.component";
 
 @Component({
   selector: 'paragraph',
