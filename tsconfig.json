@@ -11,8 +11,8 @@
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "paths": {
-      "ng-prosemirror-adaptor": [
-        "./dist/ng-prosemirror-adaptor"
+      "ng-prosemirror-adapter": [
+        "./dist/ng-prosemirror-adapter"
       ]
     },
     "sourceMap": true,

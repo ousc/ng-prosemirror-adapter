@@ -19,7 +19,7 @@ npm run start
 ```
 
 ## Online Demo
-[https://ousc.github.io/ng-prosemirror-adapter](https://ousc.github.io/ng-prosemirror-adaptor/)
+[https://ousc.github.io/ng-prosemirror-adapter](https://ousc.github.io/ng-prosemirror-adapter/)
 
 ## Getting Started
 
