@@ -9,9 +9,6 @@ import {
       <div role="presentation" [class.selected]="selected"></div>
   `,
   styles: [`
-    :host {
-      display: contents;
-    }
     :host .selected {
       outline: blue solid 1px;
     }

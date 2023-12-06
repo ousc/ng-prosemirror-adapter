@@ -37,7 +37,7 @@
           "configurations": {
             "production": {
               "preserveSymlinks": true,
-              "sourceMap": true,
+              "sourceMap": false,
               "budgets": [
                 {
                   "type": "initial",
@@ -126,7 +126,6 @@
             "project": "projects/ng-prosemirror-adaptor/ng-package.json"
           },
           "configurations": {
-            "preserveSymlinks": true,
             "production": {
               "tsConfig": "projects/ng-prosemirror-adaptor/tsconfig.lib.prod.json"
             },

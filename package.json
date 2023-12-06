@@ -4,9 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration development",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:lib": "ng build ng-prosemirror-adaptor --configuration production",
+    "publish": "npm run build:lib && cd dist/ng-prosemirror-adaptor && npm publish"
   },
   "private": true,
   "dependencies": {

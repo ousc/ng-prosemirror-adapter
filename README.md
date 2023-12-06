@@ -60,9 +60,6 @@ import {NgProsemirrorNode} from 'ng-prosemirror-adapter';
       <div role="presentation" [class.selected]="selected"></div>
   `,
   styles: [`
-    :host {
-      display: contents;
-    }
     :host .selected {
       outline: blue solid 1px;
     }
@@ -388,6 +385,12 @@ export interface PluginViewContext {
 }
 ```
 
+#### NgProsemirrorPlugin.view: EditorView
+
+#### NgProsemirrorPlugin.state: EditorState
+
+#### NgProsemirrorPlugin.prevState: EditorState
+
 </details>
 
 <details>
@@ -422,6 +425,12 @@ export interface WidgetViewContext {
   spec?: WidgetDecorationSpec
 }
 ```
+
+#### NgProsemirrorWidget.view: EditorView
+
+#### NgProsemirrorWidget.getPos: () => number | undefined
+
+#### NgProsemirrorWidget.spec: WidgetDecorationSpec
 
 </details>
 
