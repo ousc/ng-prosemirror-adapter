@@ -1,11 +1,13 @@
-# ng-prosemirror-adapter
+<h1 style="font-weight: 500; background: linear-gradient(to right,#8514f5,#f637e3,#fa2c05); -webkit-background-clip: text; background-clip: text;-webkit-text-fill-color: transparent;">ng-prosemirror-adapter</h1>
 
-<img src="O1CN01RSfkps1J0vtVaKr0U_!!6000000000967-49-tps-1920-1920.webp" width="150">
+<img src="prosemirrorAdapterLogo.svg" width="200" style="vertical-align: middle;">
+<span style="font-size: 30px;color: #aaa;margin: 0 20px;">+</span>
+<img src="O1CN01RSfkps1J0vtVaKr0U_!!6000000000967-49-tps-1920-1920.webp" width="150" style="vertical-align: middle;">
 
-[Angular](https://angular.dev/) adapter for [ProseMirror](https://prosemirror.net/), Only supports Angular 17+.
+[Angular](https://angular.dev/) adapter for [ProseMirror](https://prosemirror.net/), only supports Angular **17**+.
 
-Thanks to  [prosemirror-adapter](https://github.com/Saul-Mirone/prosemirror-adapter) by [@Saul-Mirone](https://github.com/Saul-Mirone) for providing the basic implementation(
-Main ideas and API design).This project is just adding support for Angular.
+Thanks to  [**prosemirror-adapter**](https://github.com/Saul-Mirone/prosemirror-adapter) by [**@Saul-Mirone**](https://github.com/Saul-Mirone) for providing the basic implementation(
+Main ideas and API design).**This project is just adding support for Angular.**
 
 ## Example
 
@@ -440,4 +442,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-MIT License
+[MIT License](LICENSE)

@@ -19,10 +19,19 @@ export class AppComponent {
   constructor(private cd: ChangeDetectorRef) {
   }
 
+  /**
+   * The `render` method is used to refresh the component view.
+   * Initially, it sets the `visible` property to false, hiding the component.
+   * Then, it sets a timeout that after its completion, sets the `visible` property back to true, making the component visible again.
+   * Finally, it marks the component for check and triggers change detection to update the view.
+   */
   render() {
-    this.visible = false;
+    this.visible = false; // Hide the component initially
+
     setTimeout(() => {
-      this.visible = true;
+      this.visible = true; // Make the component visible after the timeout
+
+      // Mark the component for check and trigger change detection
       this.cd.markForCheck();
       this.cd.detectChanges();
     });

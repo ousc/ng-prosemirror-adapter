@@ -29,7 +29,13 @@ import {
   standalone: true
 })
 export class Heading extends NgProsemirrorNode {
-  get level() {
+  /**
+   * Getter for the `level` property.
+   * It returns the level attribute of the node.
+   * The `node` and `attrs` properties are accessed using optional chaining to avoid errors when they are undefined.
+   * @returns {number | undefined} The level of the node, or undefined if `node` or `attrs` is undefined.
+   */
+  get level(): number | undefined {
     return this.node?.attrs?.['level'];
   }
 }

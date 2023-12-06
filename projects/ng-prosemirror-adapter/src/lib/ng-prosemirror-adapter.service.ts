@@ -16,6 +16,13 @@ import {NgProsemirrorEditor} from "./components/ng-prosemirror-editor.component"
 import {NgProsemirrorWidget} from "./components/ng-prosemirror-widget.component";
 import {NgProsemirrorPlugin} from "./components/ng-prosemirror-plugin.component";
 
+/**
+ * Returns the first child element of the given HTMLElement.
+ * If the HTMLElement does not have a first child element, it returns the HTMLElement itself.
+ *
+ * @param {HTMLElement} el - The HTMLElement to get the first child element from.
+ * @returns {HTMLElement} The first child element of the given HTMLElement, or the HTMLElement itself if it does not have a first child element.
+ */
 const firstElementChild = (el: HTMLElement) => {
   if (el.firstElementChild) {
     return el.firstElementChild;
