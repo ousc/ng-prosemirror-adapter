@@ -36,6 +36,8 @@
           },
           "configurations": {
             "production": {
+              "preserveSymlinks": true,
+              "sourceMap": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -51,9 +53,24 @@
               "outputHashing": "all"
             },
             "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
+              "preserveSymlinks": true,
+              "optimization": true,
+              "extractLicenses": true,
+              "sourceMap": true,
+              "namedChunks": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
             }
           },
           "defaultConfiguration": "production"
@@ -109,6 +126,7 @@
             "project": "projects/ng-prosemirror-adaptor/ng-package.json"
           },
           "configurations": {
+            "preserveSymlinks": true,
             "production": {
               "tsConfig": "projects/ng-prosemirror-adaptor/tsconfig.lib.prod.json"
             },
