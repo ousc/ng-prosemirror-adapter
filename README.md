@@ -289,7 +289,6 @@ else you can use @ViewChild to access the NgProsemirrorAdapterProvider instance 
 #### NgProsemirrorEditor.provider.createNodeView: NodeViewFactory => (options: NgNodeViewUserOptions) => NodeViewConstructor
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
 type NgNodeViewUserOptions = {
   component: Type<NgProsemirrorNode>
   as?: string | HTMLElement
