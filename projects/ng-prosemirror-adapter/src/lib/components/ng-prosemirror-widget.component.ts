@@ -1,13 +1,10 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, Input, Output} from "@angular/core";
+import {AfterViewInit, Directive, ElementRef, EventEmitter, Input, Output} from "@angular/core";
 import {NgProsemirrorAdapterProvider} from "../ng-prosemirror-adapter.component";
-import {CoreNodeView, CoreWidgetView} from "@prosemirror-adapter/core";
+import {CoreWidgetView} from "@prosemirror-adapter/core";
 import {NgEditorViewComponent} from "../ngProsemirrorAdapter.type";
 
-
-@Component({
+@Directive({
   selector: 'ng-prosemirror-widget',
-  template: ``,
-  styles: [],
   standalone: true
 })
 export abstract class NgProsemirrorWidget implements AfterViewInit {

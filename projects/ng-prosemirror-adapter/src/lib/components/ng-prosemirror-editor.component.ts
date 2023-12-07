@@ -1,10 +1,8 @@
-import {Component, ElementRef} from "@angular/core";
+import {Directive, ElementRef} from "@angular/core";
 import {NgProsemirrorAdapterProvider} from "../ng-prosemirror-adapter.component";
 
-@Component({
+@Directive({
   selector: 'ng-prosemirror-editor',
-  template: ``,
-  styles: [],
   standalone: true
 })
 export abstract class NgProsemirrorEditor {
