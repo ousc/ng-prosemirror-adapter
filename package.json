@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration development",
+    "build": "ng build --configuration development --base-href /ng-prosemirror-adapter/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build:lib": "ng build ng-prosemirror-adapter --configuration production",
