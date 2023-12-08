@@ -11,4 +11,16 @@ export abstract class NgProsemirrorEditor {
   }
 
   public provider: NgProsemirrorAdapterProvider;
+
+  public get createNodeView (){
+    return this.provider.createNodeView;
+  }
+
+  public get createPluginView (){
+    return this.provider.createPluginView;
+  }
+
+  public get createWidgetView (){
+    return this.provider.createWidgetView;
+  }
 }

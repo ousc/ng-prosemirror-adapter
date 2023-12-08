@@ -41,7 +41,7 @@ export class NgProsemirrorAdapterProvider {
     this.service.provider = this;
   }
 
-  public createPluginView = this.service.createPluginView;
   public createNodeView = this.service.createNodeView;
+  public createPluginView = this.service.createPluginView;
   public createWidgetView = this.service.createWidgetView;
 }
