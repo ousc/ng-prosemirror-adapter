@@ -52,6 +52,7 @@ export class NgProsemirrorAdapterService {
     }
     this.nodeViewContext[key] = {
       ...this.nodeViewContext[key],
+      setAttrs: nodeView.setAttrs,
       view: Object.assign(Object.create(Object.getPrototypeOf(nodeView.view)), nodeView.view),
       getPos: nodeView.getPos,
       node: nodeView.node,
@@ -111,7 +112,7 @@ export class NgProsemirrorAdapterService {
       });
       firstElementChild(this.nodeView[key].dom).appendChild(componentRef.location.nativeElement);
       this.updateNodeViewContext(key);
-      this.nodeViewContext[key].contentRef(componentRef.instance.el.nativeElement);
+      this.nodeViewContext[key].contentRef(componentRef.instance.container);
       return this.nodeView[key];
     };
   }

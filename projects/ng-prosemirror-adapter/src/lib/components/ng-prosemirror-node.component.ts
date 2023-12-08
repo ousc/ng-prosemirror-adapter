@@ -1,7 +1,5 @@
-import {AfterViewInit, Directive, ElementRef, EventEmitter, Input, Output} from "@angular/core";
+import {AfterViewInit, Directive, ElementRef, Input} from "@angular/core";
 import {NgProsemirrorAdapterProvider} from "../ng-prosemirror-adapter.component";
-import {CoreNodeView} from "@prosemirror-adapter/core";
-import {NgEditorViewComponent} from "../ngProsemirrorAdapter.type";
 
 @Directive({
   selector: 'ng-prosemirror-node',
@@ -49,7 +47,11 @@ export abstract class NgProsemirrorNode implements AfterViewInit {
     return this.context?.innerDecorations;
   }
 
+  get container() {
+    return this.el.nativeElement;
+  }
+
   ngAfterViewInit(): void {
-    this.context?.contentRef(this.el.nativeElement);
+    this.context?.contentRef(this.container);
   }
 }
