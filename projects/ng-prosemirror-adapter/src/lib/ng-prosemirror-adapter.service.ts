@@ -23,9 +23,9 @@ import {NgProsemirrorPlugin} from "./components/ng-prosemirror-plugin.component"
  * @param {HTMLElement} el - The HTMLElement to get the first child element from.
  * @returns {HTMLElement} The first child element of the given HTMLElement, or the HTMLElement itself if it does not have a first child element.
  */
-const firstElementChild = (el: HTMLElement) => {
+const firstElementChild = (el: HTMLElement): HTMLElement => {
   if (el.firstElementChild) {
-    return el.firstElementChild;
+    return el.firstElementChild as HTMLElement;
   }
   return el;
 }
@@ -131,42 +131,38 @@ export class NgProsemirrorAdapterService {
   }
 
   createPluginView: PluginViewFactory = (options: NgPluginViewUserOptions) => {
-    const key = options.key || nanoid();
-    const componentRef = this._vcf.createComponent(options.component, {injector: this._injector});
+    return (view: EditorView) => {
+      const key = options.key || nanoid();
+      const componentRef = this._vcf.createComponent(options.component, {injector: this._injector});
 
-    Object.keys(options.inputs || {}).forEach((key) => {
-      componentRef.setInput(key, options.inputs[key])
-    });
-
-    componentRef.setInput("provider", this.provider);
-    componentRef.setInput('key', key);
-
-    return new Promise((resolve) => {
-      componentRef.instance.onPluginReady.subscribe((pluginView: CorePluginView<NgProsemirrorPlugin>) => {
-        resolve((view: EditorView) => {
-          this.pluginView[key] = pluginView || new CorePluginView<NgProsemirrorPlugin>({
-            view,
-            options: {
-              ...options,
-              component: componentRef.instance,
-              update: (view, prevState) => {
-                options.update?.(view, prevState);
-                this.updatePluginViewContext(key);
-              },
-              destroy: () => {
-                options.destroy?.()
-                this.pluginView[key].destroy();
-                delete this.pluginView[key];
-              },
-            }
-          });
-          this.updatePluginViewContext(key);
-          firstElementChild(this.provider.editor.el.nativeElement).appendChild(componentRef.location.nativeElement);
-          this.pluginView[key].update(view, view.state)
-          return this.pluginView[key];
-        })
+      Object.keys(options.inputs || {}).forEach((key) => {
+        componentRef.setInput(key, options.inputs[key])
       });
-    })
+
+      componentRef.setInput("provider", this.provider);
+      componentRef.setInput('key', key);
+      this.pluginView[key] = componentRef.instance.pluginView || new CorePluginView<NgProsemirrorPlugin>({
+        view,
+        options: {
+          ...options,
+          component: componentRef.instance,
+          update: (view, prevState) => {
+            options.update?.(view, prevState);
+            this.updatePluginViewContext(key);
+          },
+          destroy: () => {
+            componentRef.destroy();
+            options.destroy?.()
+            this.pluginView[key].destroy();
+            delete this.pluginView[key];
+          },
+        }
+      });
+      this.updatePluginViewContext(key);
+      firstElementChild(this.provider.editor.el.nativeElement).appendChild(componentRef.location.nativeElement);
+      this.pluginView[key].update(view, view.state)
+      return this.pluginView[key];
+    }
   }
 
   widgetView: Record<string, CoreWidgetView<NgProsemirrorWidget>> = {};

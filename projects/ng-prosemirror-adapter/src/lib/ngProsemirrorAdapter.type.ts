@@ -62,7 +62,7 @@ export type NgPluginViewUserOptions = {
   key?: string // A string that is used to identify the plugin view.
 }
 
-export type PluginViewFactory = (options: NgPluginViewUserOptions) => Promise<PluginViewSpec>
+export type PluginViewFactory = (options: NgPluginViewUserOptions) => PluginViewSpec
 
 export interface PluginViewContext {
   view: EditorView // An instance of EditorView. This represents the editor's view.

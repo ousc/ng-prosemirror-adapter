@@ -7,11 +7,9 @@ import {NgEditorViewComponent} from "../ngProsemirrorAdapter.type";
   selector: 'ng-prosemirror-plugin',
   standalone: true
 })
-export abstract class NgProsemirrorPlugin implements AfterViewInit {
+export abstract class NgProsemirrorPlugin {
   @Input() public key: string;
   @Input() public provider: NgProsemirrorAdapterProvider;
-
-  @Output() onPluginReady = new EventEmitter<CorePluginView<NgEditorViewComponent>>();
 
   constructor(public el: ElementRef) {
   }
@@ -32,7 +30,7 @@ export abstract class NgProsemirrorPlugin implements AfterViewInit {
     return this.provider?.service?.pluginViewContext?.[this.key]?.prevState;
   }
 
-  ngAfterViewInit(): void {
-    this.onPluginReady.emit(null);
+  get pluginView(): CorePluginView<NgProsemirrorPlugin>{
+    return null;
   }
 }

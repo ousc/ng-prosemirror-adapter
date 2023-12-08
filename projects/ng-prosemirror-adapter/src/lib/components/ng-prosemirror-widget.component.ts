@@ -1,13 +1,11 @@
-import {AfterViewInit, Directive, ElementRef, EventEmitter, Input, Output} from "@angular/core";
+import {Directive, ElementRef, Input} from "@angular/core";
 import {NgProsemirrorAdapterProvider} from "../ng-prosemirror-adapter.component";
-import {CoreWidgetView} from "@prosemirror-adapter/core";
-import {NgEditorViewComponent} from "../ngProsemirrorAdapter.type";
 
 @Directive({
   selector: 'ng-prosemirror-widget',
   standalone: true
 })
-export abstract class NgProsemirrorWidget implements AfterViewInit {
+export abstract class NgProsemirrorWidget {
   @Input() public key: string;
   @Input() public provider: NgProsemirrorAdapterProvider;
 
@@ -29,10 +27,4 @@ export abstract class NgProsemirrorWidget implements AfterViewInit {
   get spec() {
     return this.provider.service.widgetViewContext?.[this.key]?.spec;
   }
-
-  ngAfterViewInit(): void {
-    this.onWidgetViewReady.emit(null);
-  }
-
-  @Output() onWidgetViewReady = new EventEmitter<CoreWidgetView<NgEditorViewComponent>>();
 }

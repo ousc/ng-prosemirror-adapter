@@ -50,9 +50,6 @@ export abstract class NgProsemirrorNode implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.onNodeViewReady.emit(null);
     this.context?.contentRef(this.el.nativeElement);
   }
-
-  @Output() onNodeViewReady = new EventEmitter<CoreNodeView<NgEditorViewComponent>>();
 }

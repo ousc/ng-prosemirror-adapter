@@ -53,7 +53,7 @@ export class EditorComponent extends NgProsemirrorEditor implements AfterViewIni
       heading: this.provider.createNodeView({ component: Heading }),
     }, [
       new Plugin({
-        view: await this.provider.createPluginView({ component: Size }),
+        view: this.provider.createPluginView({ component: Size }),
       }),
       new Plugin({
         props: {
