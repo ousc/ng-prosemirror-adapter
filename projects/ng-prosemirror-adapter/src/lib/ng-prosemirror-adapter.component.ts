@@ -1,10 +1,9 @@
 import {
-  Component, ContentChild, ContentChildren
+  Component, ContentChild
 } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {NgProsemirrorAdapterService} from "./ng-prosemirror-adapter.service";
 import {NgProsemirrorEditor} from "./components/ng-prosemirror-editor.component";
-import {NgProsemirrorComp} from "./components/ng-prosemirror-comp.component";
 
 @Component({
   selector: 'ng-prosemirror-adapter-provider',
@@ -31,13 +30,6 @@ export class NgProsemirrorAdapterProvider {
       this._editorComp.provider = this;
       this.service.editor = this._editorComp;
     }
-  }
-
-  @ContentChildren(NgProsemirrorComp)
-  public set comps(value: NgProsemirrorComp[]) {
-    value.forEach(comp => {
-      comp.provider = this;
-    })
   }
 
   public get editor() {
