@@ -1,9 +1,12 @@
-<h1 style="font-weight: 500; background: linear-gradient(to right,#8514f5,#f637e3,#fa2c05); -webkit-background-clip: text; background-clip: text;-webkit-text-fill-color: transparent;">ng-prosemirror-adapter</h1>
+<p align="center">
+  <a href="https://ousc.github.io/ng-prosemirror-adapter">
+    <img src="prosemirrorAdapterLogo.png" width="230" style="vertical-align: middle;">
+  </a>
+</p>
 
-<img src="prosemirrorAdapterLogo.svg" width="200" style="vertical-align: middle;">
-<span style="font-size: 30px;color: #aaa;margin: 0 20px;">+</span>
-<img src="O1CN01RSfkps1J0vtVaKr0U_!!6000000000967-49-tps-1920-1920.webp" width="150" style="vertical-align: middle;">
-
+<h1 align="center">
+NG-PROSEMIRROR-ADAPTER
+</h1>
 [Angular](https://angular.dev/) adapter for [ProseMirror](https://prosemirror.net/), only supports Angular **17**+.
 
 Thanks to  [**prosemirror-adapter**](https://github.com/Saul-Mirone/prosemirror-adapter) by [**@Saul-Mirone**](https://github.com/Saul-Mirone) for providing the basic implementation(
