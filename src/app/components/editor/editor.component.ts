@@ -39,42 +39,44 @@ export class EditorComponent extends NgProsemirrorEditor implements AfterViewIni
    * Otherwise, it gets a widget with the level attribute of the node and a side of -1, and creates a DecorationSet with the widget.
    */
   async ngAfterViewInit(): Promise<void> {
-    console.log('editor re-rendered!', this.editorRef)
-    const el = this.editorRef.nativeElement;
-    if (!el || el.firstChild)
-      return;
+    setTimeout(()=>{
+      console.log('editor rendered!', this.editorRef)
+      const el = this.editorRef.nativeElement;
+      if (!el || el.firstChild)
+        return;
 
-    createEditorView(this.editorRef.nativeElement, {
-      paragraph: this.provider.createNodeView({
-        component: Paragraph,
-        as: 'div',
-        contentAs: 'p',
-      }),
-      heading: this.provider.createNodeView({ component: Heading }),
-    }, [
-      new Plugin({
-        view: this.provider.createPluginView({ component: Size }),
-      }),
-      new Plugin({
-        props: {
-          decorations: (state) => {
-            const getHashWidget = this.provider.createWidgetView({
-              as: 'i',
-              component: Hashes,
-            })
-            const {$from} = state.selection
-            const node = $from.node()
-            if (node.type.name !== 'heading')
-              return DecorationSet.empty
+      createEditorView(this.editorRef.nativeElement, {
+        paragraph: this.provider.createNodeView({
+          component: Paragraph,
+          as: 'div',
+          contentAs: 'p',
+        }),
+        heading: this.provider.createNodeView({ component: Heading }),
+      }, [
+        new Plugin({
+          view: this.provider.createPluginView({ component: Size }),
+        }),
+        new Plugin({
+          props: {
+            decorations: (state) => {
+              const getHashWidget = this.provider.createWidgetView({
+                as: 'i',
+                component: Hashes,
+              })
+              const {$from} = state.selection
+              const node = $from.node()
+              if (node.type.name !== 'heading')
+                return DecorationSet.empty
 
-            const widget = getHashWidget($from.before() + 1, {
-              side: -1,
-              level: node.attrs['level'],
-            })
-            return DecorationSet.create(state.doc, [widget])
+              const widget = getHashWidget($from.before() + 1, {
+                side: -1,
+                level: node.attrs['level'] || 0,
+              })
+              return DecorationSet.create(state.doc, [widget])
+            },
           },
-        },
-      }),
-    ]);
+        }),
+      ]);
+    });
   }
 }

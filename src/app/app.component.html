@@ -1,7 +1,8 @@
 <h1>Prosemirror Adapter Angular</h1>
-<button (click)="render()">
+<button (click)="counter = counter + 1">
   rerender
 </button>
-<ng-prosemirror-adapter-provider *ngIf="visible">
+<ng-prosemirror-adapter-provider *rerender="counter">
   <editor/>
 </ng-prosemirror-adapter-provider>
+
