@@ -10,8 +10,7 @@ NG-PROSEMIRROR-ADAPTER
 
 [Angular](https://angular.dev/) adapter for [ProseMirror](https://prosemirror.net/), only supports Angular **17**+.
 
-Thanks to  [**prosemirror-adapter**](https://github.com/Saul-Mirone/prosemirror-adapter) by [**@Saul-Mirone**](https://github.com/Saul-Mirone) for providing the basic implementation(
-Main ideas and API design).**This project is just adding support for Angular.**
+More detail please move to [**prosemirror-adapter**](https://github.com/Saul-Mirone/prosemirror-adapter) by [**@Saul-Mirone**](https://github.com/Saul-Mirone).**This project is just adding support for Angular.**
 
 ## Example
 
