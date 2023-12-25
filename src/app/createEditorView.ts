@@ -18,7 +18,7 @@ import {keymap} from "prosemirror-keymap";
  *
  * The function first selects the content element from the document. If the content element is not found, it throws an error.
  * Then, it creates an instance of EditorView with the provided element, state, and nodeViews.
- * The state is created using EditorState.create method with the document parsed from the content element, the schema, and the plugins.
+ * The state is created using EditorState.Create method with the document parsed from the content element, the schema, and the plugins.
  * The plugins array is composed of the default example setup, a keymap for 'Mod-[' shortcut, and the provided plugins.
  * The 'Mod-[' shortcut is mapped to a function that increases the level of the heading node in the selection if it's less than 6, or sets it to 1 if it's 6 or more.
  */
