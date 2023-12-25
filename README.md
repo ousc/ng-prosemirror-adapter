@@ -7,6 +7,7 @@
 <h1 align="center">
 NG-PROSEMIRROR-ADAPTER
 </h1>
+
 [Angular](https://angular.dev/) adapter for [ProseMirror](https://prosemirror.net/), only supports Angular **17**+.
 
 Thanks to  [**prosemirror-adapter**](https://github.com/Saul-Mirone/prosemirror-adapter) by [**@Saul-Mirone**](https://github.com/Saul-Mirone) for providing the basic implementation(
