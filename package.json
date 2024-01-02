@@ -1,6 +1,6 @@
 {
   "name": "ng-prosemirror-adapter",
-  "version": "0.0.0",
+  "version": "0.0.1-beta.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build:lib": "ng build ng-prosemirror-adapter --configuration production",
-    "publish": "npm run build:lib && cd dist/ng-prosemirror-adapter && npm publish"
+    "publish": "npm run build:lib && cd dist/ng-prosemirror-adapter && npm publish",
+    "publish:beta": "npm run build:lib && cd dist/ng-prosemirror-adapter && npm publish --tag beta"
   },
   "private": true,
   "dependencies": {
