@@ -115,6 +115,7 @@ export class NgProsemirrorAdapterService {
           },
           destroy: () => {
             options.destroy?.();
+            componentRef.destroy();
             this.updateNodeViewContext(key);
           },
         }
