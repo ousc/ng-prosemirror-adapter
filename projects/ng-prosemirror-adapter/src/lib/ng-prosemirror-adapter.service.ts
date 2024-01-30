@@ -164,9 +164,14 @@ export class NgProsemirrorAdapterService {
           },
         }
       });
-      firstElementChild(this.provider.editor.el.nativeElement).appendChild(componentRef.instance.container);
+      const div = document.createElement("div");
+      div.style.display = 'none';
+      div.appendChild(componentRef.instance.container);
+      document.body.appendChild(div);
       this.pluginView[key].update(view, view.state);
       this.updatePluginViewContext(key, view, view.state);
+      firstElementChild(this.provider.editor.el.nativeElement).appendChild(componentRef.instance.container);
+      div.remove();
       return this.pluginView[key];
     }
   }
