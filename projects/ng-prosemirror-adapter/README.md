@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://ousc.github.io/ng-prosemirror-adapter">
-    <img src="prosemirrorAdapterLogo.png" width="230" style="vertical-align: middle;">
+    <img src="https://github.com/ousc/ng-prosemirror-adapter/raw/main/prosemirrorAdapterLogo.png" width="230" style="vertical-align: middle;">
   </a>
 </p>
 

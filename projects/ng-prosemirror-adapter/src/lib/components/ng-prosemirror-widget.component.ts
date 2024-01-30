@@ -1,6 +1,7 @@
 import {Directive, ElementRef, EventEmitter, Input} from "@angular/core";
 import {NgProsemirrorAdapterProvider} from "../ng-prosemirror-adapter.component";
 import {WidgetViewContext} from "../ngProsemirrorAdapter.type";
+import {firstElementChild} from "../ng-prosemirror-adapter.service";
 
 @Directive({
   selector: 'ng-prosemirror-widget',
@@ -27,6 +28,10 @@ export abstract class NgProsemirrorWidget {
 
   get spec() {
     return this.provider.service.widgetViewContext?.[this.key]?.spec;
+  }
+
+  get parentView() {
+    return firstElementChild(this.provider.service.widgetView?.[this.key].dom);
   }
 
   get container() {

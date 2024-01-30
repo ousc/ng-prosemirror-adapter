@@ -1,5 +1,6 @@
 import {AfterViewInit, Directive, ElementRef, Input} from "@angular/core";
 import {NgProsemirrorAdapterProvider} from "../ng-prosemirror-adapter.component";
+import {firstElementChild} from "../ng-prosemirror-adapter.service";
 
 @Directive({
   selector: 'ng-prosemirror-node',
@@ -45,6 +46,10 @@ export abstract class NgProsemirrorNode implements AfterViewInit {
   }
   get innerDecorations(){
     return this.context?.innerDecorations;
+  }
+
+  get parentView() {
+    return firstElementChild(this.provider.service.nodeView?.[this.key].dom);
   }
 
   get container() {
