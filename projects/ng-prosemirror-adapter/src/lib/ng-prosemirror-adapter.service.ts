@@ -103,7 +103,7 @@ export class NgProsemirrorAdapterService {
           onUpdate: () => {
             options.onUpdate?.();
             this.updateNodeViewContext(key);
-            this.nodeViewContext[key].contentRef(componentRef.instance.el.nativeElement);
+            this.nodeViewContext[key].contentRef(componentRef.instance.container);
           },
           selectNode: () => {
             options.selectNode?.();
