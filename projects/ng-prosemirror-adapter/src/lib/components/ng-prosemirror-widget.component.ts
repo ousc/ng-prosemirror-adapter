@@ -1,7 +1,5 @@
-import {Directive, ElementRef, EventEmitter, Input} from "@angular/core";
+import {ComponentRef, Directive, ElementRef, EventEmitter, Input, ViewChild} from "@angular/core";
 import {NgProsemirrorAdapterProvider} from "../ng-prosemirror-adapter.component";
-import {WidgetViewContext} from "../ngProsemirrorAdapter.type";
-import {firstElementChild} from "../ng-prosemirror-adapter.service";
 
 @Directive({
   selector: 'ng-prosemirror-widget',
@@ -10,6 +8,7 @@ import {firstElementChild} from "../ng-prosemirror-adapter.service";
 export abstract class NgProsemirrorWidget {
   @Input() public key: string;
   @Input() public provider: NgProsemirrorAdapterProvider;
+  public _ref: ComponentRef<NgProsemirrorWidget>;
 
   constructor(public el: ElementRef) {
   }
@@ -31,12 +30,10 @@ export abstract class NgProsemirrorWidget {
   }
 
   get parentView() {
-    return firstElementChild(this.provider.service.widgetView?.[this.key].dom);
+    return this.provider.service.widgetView?.[this.key].dom;
   }
 
   get container() {
     return this.el.nativeElement;
   }
-
-  onUpdate = new EventEmitter<WidgetViewContext>();
 }

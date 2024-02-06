@@ -21,20 +21,6 @@ import {NgProsemirrorWidget} from "./components/ng-prosemirror-widget.component"
 import {NgProsemirrorPlugin} from "./components/ng-prosemirror-plugin.component";
 import {EditorState} from "prosemirror-state";
 
-/**
- * Returns the first child element of the given HTMLElement.
- * If the HTMLElement does not have a first child element, it returns the HTMLElement itself.
- *
- * @param {HTMLElement} el - The HTMLElement to get the first child element from.
- * @returns {HTMLElement} The first child element of the given HTMLElement, or the HTMLElement itself if it does not have a first child element.
- */
-export const firstElementChild = (el: HTMLElement): HTMLElement => {
-  if (el.firstElementChild) {
-    return el.firstElementChild as HTMLElement;
-  }
-  return el;
-}
-
 @Injectable()
 export class NgProsemirrorAdapterService {
   constructor(
@@ -50,9 +36,9 @@ export class NgProsemirrorAdapterService {
   nodeView: Record<string, CoreNodeView<NgEditorViewComponent>> = {};
   nodeViewContext: Record<string, NodeViewContext> = {};
 
-  createComponent = <T>(options: any): { componentRef: ComponentRef<T>, key: string } => {
+  createComponent = <T>(options: any, _key: string = null): { componentRef: ComponentRef<T>, key: string } => {
     const componentRef = this._vcf.createComponent(options.component, {injector: this._injector}) as ComponentRef<T>;
-    const key = options.key || nanoid();
+    const key = options.key || _key || nanoid();
     Object.keys(options.inputs || {}).forEach((key) => {
       componentRef.setInput(key, options.inputs[key])
     });
@@ -67,25 +53,24 @@ export class NgProsemirrorAdapterService {
     if (!nodeView.view) {
       return;
     }
-    this.nodeViewContext[key] = {
-      ...this.nodeViewContext[key],
+    this.nodeViewContext[key] = Object.assign(this.nodeViewContext[key] || {}, {
       setAttrs: nodeView.setAttrs,
-      view: Object.assign(Object.create(Object.getPrototypeOf(nodeView.view)), nodeView.view),
+      view: nodeView.view,
       getPos: nodeView.getPos,
       node: nodeView.node,
       selected: nodeView.selected,
       decorations: nodeView.decorations,
       innerDecorations: nodeView.innerDecorations,
-      contentRef: (element) => {
+      contentRef: (element: HTMLElement) => {
         if (
           element
           && element instanceof HTMLElement
           && nodeView.contentDOM
           && element.firstChild !== nodeView.contentDOM
         )
-          firstElementChild(element).appendChild(nodeView.contentDOM)
+          element.appendChild(nodeView.contentDOM)
       },
-    };
+    });
   }
 
   createNodeView: NodeViewFactory = (options: NgNodeViewUserOptions) => {
@@ -114,14 +99,15 @@ export class NgProsemirrorAdapterService {
             this.updateNodeViewContext(key);
           },
           destroy: () => {
-            options.destroy?.();
             componentRef.destroy();
-            this.updateNodeViewContext(key);
+            options.destroy?.();
+            delete this.nodeView[key];
+            delete this.nodeViewContext[key];
           },
         }
       });
-      componentRef.instance.parentView.appendChild(componentRef.location.nativeElement);
       this.updateNodeViewContext(key);
+      componentRef.instance.parentView.appendChild(componentRef.instance.el.nativeElement);
       this.nodeViewContext[key].contentRef(componentRef.instance.container);
       return this.nodeView[key];
     };
@@ -131,15 +117,10 @@ export class NgProsemirrorAdapterService {
   pluginViewContext: Record<string, PluginViewContext> = {};
 
   updatePluginViewContext(key: string, view?: EditorView, prevState?: EditorState) {
-    const pluginView = this.pluginView[key];
-    if (!pluginView.view) {
-      pluginView.view = view;
-      pluginView.prevState = prevState;
-    }
-    this.pluginViewContext[key] = {
-      view: pluginView.view,
-      prevState: pluginView.prevState,
-    };
+    this.pluginViewContext[key] = Object.assign(this.pluginViewContext[key] || {}, {
+      view: this.pluginView[key].view || view,
+      prevState: this.pluginView[key].prevState || prevState,
+    });
   }
 
   createPluginView: PluginViewFactory = (options: NgPluginViewUserOptions) => {
@@ -158,6 +139,7 @@ export class NgProsemirrorAdapterService {
             componentRef.destroy();
             options.destroy?.()
             this.pluginView[key].destroy();
+            delete this.pluginViewContext[key];
             delete this.pluginView[key];
           },
         }
@@ -173,42 +155,39 @@ export class NgProsemirrorAdapterService {
   widgetViewContext: Record<string, WidgetViewContext> = {};
 
   updateWidgetViewContext(key: string, view?: EditorView, getPos?: () => number | undefined, spec?: WidgetDecorationSpec) {
-    const widgetView = this.widgetView[key];
-    widgetView.view = widgetView.view || view;
-    widgetView.getPos = widgetView.getPos || getPos;
-    widgetView.spec = widgetView.spec || spec;
-    this.widgetViewContext[key] = {
-      ...this.widgetViewContext[key],
-      ...widgetView,
-      spec: widgetView.spec
-    };
+    this.widgetViewContext[key] = Object.assign(this.widgetViewContext[key] || {}, {
+      view: this.widgetView[key].view || view,
+      getPos: this.widgetView[key].getPos || getPos,
+      spec: this.widgetView[key].spec || spec
+    });
   }
 
   createWidgetView: WidgetViewFactory = (options: NgWidgetUserOptions) => {
     return (pos, userSpec = {}) => {
-      const {componentRef, key} = this.createComponent<NgProsemirrorWidget>(options);
+      const key = options.key || nanoid();
       const spec: WidgetDecorationSpec = {
         key,
         ...userSpec,
-        destroy: (node)=>{
+        destroy: (node) => {
+          this.widgetView[key]?.component?._ref?.destroy();
           userSpec.destroy?.(node);
-          componentRef.destroy();
+          delete this.widgetViewContext[key];
+          delete this.widgetView[key];
         }
-      }
-
-      this.widgetView[key] = new CoreWidgetView<NgProsemirrorWidget>({
-        pos,
-        spec,
-        options: {
-          ...options,
-          component: componentRef.instance
-        }
-      });
-
+      };
       return Decoration.widget(pos, (view, getPos) => {
+        const {componentRef} = this.createComponent<NgProsemirrorWidget>(options, key);
+        componentRef.instance._ref = componentRef;
+        this.widgetView[key] = new CoreWidgetView<NgProsemirrorWidget>({
+          pos,
+          spec,
+          options: {
+            ...options,
+            component: componentRef.instance
+          }
+        });
         this.widgetView[key].bind(view, getPos);
         this.updateWidgetViewContext(key, view, getPos, spec);
-        componentRef.instance.onUpdate.emit(this.widgetViewContext[key]);
         componentRef.instance.parentView.appendChild(componentRef.instance.container);
         return this.widgetView[key].dom;
       }, spec);

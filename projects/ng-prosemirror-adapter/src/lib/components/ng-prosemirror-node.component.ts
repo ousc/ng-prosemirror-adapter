@@ -1,17 +1,16 @@
-import {AfterViewInit, Directive, ElementRef, Input} from "@angular/core";
+import {Directive, ElementRef, Input, ViewChild} from "@angular/core";
 import {NgProsemirrorAdapterProvider} from "../ng-prosemirror-adapter.component";
-import {firstElementChild} from "../ng-prosemirror-adapter.service";
 
 @Directive({
   selector: 'ng-prosemirror-node',
   standalone: true
 })
-export abstract class NgProsemirrorNode implements AfterViewInit {
+export abstract class NgProsemirrorNode {
   @Input() public key: string;
   @Input() public provider: NgProsemirrorAdapterProvider;
+  @ViewChild("contentRef", {static: true}) contentRef: ElementRef = null;
 
-  constructor(public el: ElementRef) {
-  }
+  constructor(public el: ElementRef) {}
 
   get context() {
     return this.provider?.service?.nodeViewContext?.[this.key];
@@ -19,10 +18,6 @@ export abstract class NgProsemirrorNode implements AfterViewInit {
 
   get view() {
     return this.context?.view;
-  }
-
-  get contentRef() {
-    return this.context?.contentRef;
   }
 
   get getPos() {
@@ -44,19 +39,16 @@ export abstract class NgProsemirrorNode implements AfterViewInit {
   get decorations() {
     return this.context?.decorations;
   }
+
   get innerDecorations(){
     return this.context?.innerDecorations;
   }
 
   get parentView() {
-    return firstElementChild(this.provider.service.nodeView?.[this.key].dom);
+    return this.provider.service.nodeView?.[this.key].dom;
   }
 
-  get container() {
-    return this.el.nativeElement;
-  }
-
-  ngAfterViewInit(): void {
-    this.context?.contentRef(this.container);
+  get container(): HTMLElement {
+    return (this.contentRef || this.el).nativeElement;
   }
 }

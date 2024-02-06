@@ -1,7 +1,6 @@
-import {Directive, ElementRef, Input} from "@angular/core";
+import {Directive, ElementRef, Input, ViewChild} from "@angular/core";
 import {NgProsemirrorAdapterProvider} from "../ng-prosemirror-adapter.component";
 import {CorePluginView} from "@prosemirror-adapter/core";
-import {firstElementChild} from "../ng-prosemirror-adapter.service";
 
 @Directive({
   selector: 'ng-prosemirror-plugin',
@@ -35,10 +34,10 @@ export abstract class NgProsemirrorPlugin {
   }
 
   get parentView() {
-    return firstElementChild(this.provider.editor.el.nativeElement);
+    return this.provider?.service?.pluginView?.[this.key]?.root;
   }
 
-  get pluginView(): CorePluginView<NgProsemirrorPlugin>{
+  get pluginView(): CorePluginView<NgProsemirrorPlugin> {
     return null;
   }
 }
