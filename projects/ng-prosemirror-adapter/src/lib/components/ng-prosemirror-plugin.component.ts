@@ -33,8 +33,8 @@ export abstract class NgProsemirrorPlugin {
     return this.el.nativeElement;
   }
 
-  get parentView() {
-    return this.provider?.service?.pluginView?.[this.key]?.root;
+  get parentView(): HTMLElement {
+    return this.view.dom.parentElement;
   }
 
   get pluginView(): CorePluginView<NgProsemirrorPlugin> {
