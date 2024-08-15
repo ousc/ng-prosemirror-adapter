@@ -6,16 +6,10 @@ import {
 @Component({
   selector: 'heading',
   template: `
-      @switch (level) {
-          @case (1) { <h1><ng-content></ng-content></h1> }
-          @case (2) { <h2><ng-content></ng-content></h2> }
-          @case (3) { <h3><ng-content></ng-content></h3> }
-          @case (4) { <h4><ng-content></ng-content></h4> }
-          @case (5) { <h5><ng-content></ng-content></h5> }
-          @case (6) { <h6><ng-content></ng-content></h6> }
-      }
+      <div [class]="'heading h'+level" #contentRef>
+          <ng-content></ng-content>
+      </div>
   `,
-  styles: [],
   standalone: true
 })
 export class Heading extends NgProsemirrorNode {
