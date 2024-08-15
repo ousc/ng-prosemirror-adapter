@@ -6,7 +6,7 @@ import {
 @Component({
   selector: 'paragraph',
   template: `
-      <div role="presentation" [class.selected]="selected"></div>
+      <div role="presentation" [class.selected]="selected" #contentRef></div>
   `,
   styles: [`
     :host .selected {
