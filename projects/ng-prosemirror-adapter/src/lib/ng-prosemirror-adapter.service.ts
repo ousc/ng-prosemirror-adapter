@@ -104,7 +104,7 @@ export class NgProsemirrorAdapterService {
             delete this.nodeView[key];
             delete this.nodeViewContext[key];
           },
-        }
+        } as any
       });
       this.updateNodeViewContext(key);
       componentRef.instance.parentView.appendChild(componentRef.instance.el.nativeElement);

@@ -3,12 +3,5 @@
   "dest": "../../dist/ng-prosemirror-adapter",
   "lib": {
     "entryFile": "src/public-api.ts"
-  },
-  "allowedNonPeerDependencies": [
-    "prosemirror-state",
-    "prosemirror-view",
-    "prosemirror-model",
-    "@prosemirror-adapter/core",
-    "nanoid"
-  ]
+  }
 }
