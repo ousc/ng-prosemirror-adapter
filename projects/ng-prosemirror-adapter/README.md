@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://ousc.github.io/ng-prosemirror-adapter">
-    <img src="https://github.com/ousc/ng-prosemirror-adapter/raw/main/prosemirrorAdapterLogo.png" width="230" style="vertical-align: middle;">
+    <img src="prosemirrorAdapterLogo.png" width="230" style="vertical-align: middle;">
   </a>
 </p>
 
@@ -22,6 +22,13 @@ cd ng-prosemirror-adapter
 npm install
 npm run start
 ```
+
+## Versions
+
+| Angular | Prosemirror-adapter |
+|---------|---------------------|
+| 18.0.0  | 0.0.7               |
+| 17.0.0  | 0.0.6               |
 
 ## Online Demo
 [https://ousc.github.io/ng-prosemirror-adapter](https://ousc.github.io/ng-prosemirror-adapter/)
