@@ -23,6 +23,13 @@ npm install
 npm run start
 ```
 
+## Versions
+
+| Angular | Prosemirror-adapter |
+|---------|---------------------|
+| 18.0.0  | 0.0.7               |
+| 17.0.0  | 0.0.6               |
+
 ## Online Demo
 [https://ousc.github.io/ng-prosemirror-adapter](https://ousc.github.io/ng-prosemirror-adapter/)
 
