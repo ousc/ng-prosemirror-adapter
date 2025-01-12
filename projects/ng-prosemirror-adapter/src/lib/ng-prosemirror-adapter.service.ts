@@ -138,7 +138,6 @@ export class NgProsemirrorAdapterService {
           destroy: () => {
             componentRef.destroy();
             options.destroy?.()
-            this.pluginView[key].destroy();
             delete this.pluginViewContext[key];
             delete this.pluginView[key];
           },
@@ -163,7 +162,7 @@ export class NgProsemirrorAdapterService {
   }
 
   createWidgetView: WidgetViewFactory = (options: NgWidgetUserOptions) => {
-    return (pos, userSpec = {}) => {
+    return (pos, userSpec: any = {}) => {
       const key = options.key || nanoid();
       const spec: WidgetDecorationSpec = {
         key,

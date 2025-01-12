@@ -1,6 +1,6 @@
 {
   "name": "ng-prosemirror-adapter",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "peerDependencies": {
     "@angular/common": "^18.1.0",
     "@angular/core": "^18.1.0"
