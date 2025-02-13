@@ -27,7 +27,7 @@ npm run start
 
 | Angular | Prosemirror-adapter |
 |---------|---------------------|
-| 18.0.0  | 0.0.7               |
+| 18.0.0  | 0.0.8               |
 | 17.0.0  | 0.0.6               |
 
 ## Online Demo
