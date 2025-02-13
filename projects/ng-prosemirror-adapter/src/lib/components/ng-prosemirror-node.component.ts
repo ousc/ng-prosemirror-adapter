@@ -51,4 +51,6 @@ export abstract class NgProsemirrorNode {
   get container(): HTMLElement {
     return (this.contentRef || this.el).nativeElement;
   }
+
+  onUpdate() {}
 }

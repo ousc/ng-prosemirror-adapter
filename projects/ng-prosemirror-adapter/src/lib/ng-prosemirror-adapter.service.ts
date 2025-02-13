@@ -87,6 +87,7 @@ export class NgProsemirrorAdapterService {
           component: componentRef,
           onUpdate: () => {
             options.onUpdate?.();
+            componentRef.instance.onUpdate();
             this.updateNodeViewContext(key);
             this.nodeViewContext[key].contentRef(componentRef.instance.container);
           },
